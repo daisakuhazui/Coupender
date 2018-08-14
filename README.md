@@ -1,24 +1,41 @@
-# README
+## 設計思想
+- 無駄な機能は極力排除する
+- とにかくシンプルな使い心地を追求する
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Model Design
 
-Things you may want to cover:
+# Models
+- User
+  - username
+  - email
+  - password
 
-* Ruby version
+- Calender
+  - title
+  - owner_id
 
-* System dependencies
+- Plan
+  - title
+  - from_date
+  - till_date
 
-* Configuration
+# Intermediate Tables
+- calender_plans
+  - calender_id
+  - plan_id
 
-* Database creation
+- calender_users
+  - calender_id
+  - user_id
 
-* Database initialization
+## gems to use
+- devise
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Functions
+- UserはCalenderを何個も作成することが出来る
+- Userはowner_idが自分のidが一致する場合にそのCalenderに他Userを招待できる
+- 招待されたUserはオーナーと同じくCalender内のPlanを新規作成・編集・削除できる
+- Userは自分の画面で閲覧できるCalenderのPlanを好きな色で表示させることができる
+- Planをクリックすると予定の詳細が表示される
+- Userは画面に表示するCalenderを選択できる、つまり非表示設定も出来る
+- 画面表示のデフォルトは月単位カレンダーっぽい形
